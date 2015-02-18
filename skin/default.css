@@ -6,16 +6,16 @@ a {
 	color: #35A49C;
 }
 a:hover {
-	color: #79CDC0;
+	color: #FDC82F;
 }
 
 /* menu */
 .nav>li>a:hover {
-	color: #79CDC0;
+	color: #FDC82F;
 }
 
 .navbar .navbar-nav > .active > a {
-	color: #79CDC0;
+	color: #FDC82F;
 }
 
 /* flexslider */
@@ -49,10 +49,12 @@ a:hover {
 
 /* btn */
 .btn-theme {
-  background: #79CDC0;
+  background: #A71930;
+  color: #FDC82F;
 }
 .btn-theme:hover,.btn-theme:focus,.btn-theme:active{
-  background: #35A49C;
+  background: #FDC82F;
+  color: #A71930;
 }
 .btn-cta,.btn-cta.btn-lg {
   background: #35A49C;
@@ -74,5 +76,5 @@ a:hover {
 }
 
 a.scrollup{
-	background:#35A49C;
+	background:#A71930;
 }
