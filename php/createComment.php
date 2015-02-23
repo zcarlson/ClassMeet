@@ -5,7 +5,7 @@
 	$comment = $_POST['comment'];
 	
 	$total = $username.",".$classname.",".$comment.";";
-	$fp = fopen('accounts.txt', 'a+');
+	$fp = fopen('comments.txt', 'a+');
 	fwrite($fp, $total);
 	fclose ($fp);
 	
