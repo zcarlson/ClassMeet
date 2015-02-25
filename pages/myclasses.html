@@ -29,13 +29,6 @@
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
@@ -57,12 +50,12 @@
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="message-inbox.html">
                         <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
                         <li>
-                            <a href="#">
+                            <a href="message-inbox.html">
                                 <div>
                                     <strong>John Smith</strong>
                                     <span class="pull-right text-muted">
@@ -74,7 +67,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
+                            <a href="message-inbox.html">
                                 <div>
                                     <strong>Lori Michaels</strong>
                                     <span class="pull-right text-muted">
@@ -86,7 +79,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
+                            <a href="message-inbox.html">
                                 <div>
                                     <strong>George Leman</strong>
                                     <span class="pull-right text-muted">
@@ -121,17 +114,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <!--<li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group
-                        </li>-->
+                        
                         <li>
                             <a href="myclasses.html"><i class="fa fa-graduation-cap fa-fw"></i>My Classes</a>
                             <!-- /.nav-second-level -->
@@ -152,7 +135,7 @@
                                     <a href="message-inbox.html">Inbox</a>
                                 </li>
                                 <li>
-                                    <a href="#">Outbox</a>
+                                    <a href="message-outbox.html">Outbox</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -177,6 +160,7 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+	
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
@@ -188,17 +172,16 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="" width="100">
+                                <table class="table table-striped table-bordered table-striped row-click" id="" width="100">
                                    <thead>
                                         <tr>
                                             <th>Class Name</th>
                                             <th>Section</th>
+											<th>Classmates</th>
                                         </tr>
                                     </thead>
 									<tbody>
-                                         <ul class="nav nav-second-level">
-									
-										</ul>
+                             
 									</tbody>
                                 </table>
                             </div>
@@ -245,36 +228,36 @@ function LoadFile() {
 	
     for (var i = 0; i < arrLines.length-1; i++) {
         var curLine = arrLines[i];
-		var line = curLine.split(",");
-		addmyClasses(line[0], line[1]);
+		var line = curLine.split(".");
+		addmyClasses(line[0], line[1], line[2]);
     }
 }
 </script>
 
 <script>
-function addmyClasses(className, section)
+function addmyClasses(className, section, students)
 {
          if (!document.getElementsByTagName) return;
          tabBody=document.getElementsByTagName("tbody").item(0);
          row=document.createElement("tr");
          c1 = document.createElement("td");
          c2 = document.createElement("td");
+		 c3 = document.createElement("td");
          textnode1=document.createTextNode(className);
          textnode2=document.createTextNode(section);
+		 textnode3=document.createTextNode(students);
 		 
          c1.appendChild(textnode1);
          c2.appendChild(textnode2);
+		 c3.appendChild(textnode3);
          row.appendChild(c1);
          row.appendChild(c2);
+		 row.appendChild(c3);
          tabBody.appendChild(row);
 
 
 }
 </script>
-
-<script>
-	</script>
-	
 	
 </body>
 

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Class Meet - Comments</title>
+    <title>Class Meet - Inbox</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,6 +28,7 @@
 
     <!-- Custom Fonts -->
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 
 </head>
 
@@ -99,8 +100,10 @@
                     </ul>
                     <!-- /.dropdown-messages -->
                 </li>
- 
+             
+                
                 <!-- /.dropdown -->
+                <li class="dropdown">
                         <li><a href="../login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
@@ -113,11 +116,11 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        
-                         <li>
+                       
+                          <li>
                             <a href="myclasses.html"><i class="fa fa-graduation-cap fa-fw"></i>My Classes</a>
                             <!-- /.nav-second-level -->
-                        </li>
+							</li>
 	
 						<li>
                             <a href="events-list.html"><i class="fa fa-table fa-fw"></i> Events</a>
@@ -140,6 +143,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         
+                        
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -150,8 +154,8 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Comments
-					<a href="create-comment.html" class="btn btn-primary" role="button">Post New Comment</a>
+                    <h1 class="page-header">Message Outbox
+					<a href="create-message.html" class="btn btn-primary" role="button">New Message</a>
 					</h1>
 					
                 </div>
@@ -159,47 +163,33 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                           
                         </div>
-						<iframe id="frmFile" src="/php/comments.txt" onload="LoadFile();" style="display: none;"></iframe>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="dataTable_wrapper">
-                                <table class="table table-striped table-bordered table-hover" id="" width="100">
-                                   <thead>
+                            <div class="table-responsive">
+							<iframe id="frmFile" src="/php/message-outbox.txt" onload="LoadFile();" style="display: none;"></iframe>
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
                                         <tr>
-                                            <th>Posted By</th>
-                                            <th>Class Name</th>
-                                            <th>Comment</th>
+                                            <th>To</th>
+                                            <th>Message</th>
                                         </tr>
                                     </thead>
-									<tbody>
-										<tr>
-											<td>Donald Prentic</td>
-											<td>ECON 101</td>
-											<td>I enjoyed this class!  Highly recommended for everyone to take to gain an economics understanding.</td>
-										</tr>
-										
-										<tr>
-											<td>Melissa Grigg</td>
-											<td>CHEM 331</td>
-											<td>Tough Class but very interesting!  Make sure to read the book!</td>
-										</tr>
-                                        
-									</tbody>
+                                    <tbody>
+                                  
+                                    </tbody>
                                 </table>
                             </div>
-                            
+                            <!-- /.table-responsive -->
                         </div>
-					
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
-                <!-- /.col-lg-12 -->
+                <!-- /.col-lg-6 -->
             </div>
             
         </div>
@@ -222,8 +212,7 @@
     <script src="../bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>	
-
+    <script src="../dist/js/sb-admin-2.js"></script>
 <script>
 function LoadFile() {
     var oFrame = document.getElementById("frmFile");
@@ -235,35 +224,34 @@ function LoadFile() {
     for (var i = 0; i < arrLines.length-1; i++) {
         var curLine = arrLines[i];
 		var line = curLine.split(",");
-		addRow(line[0], line[1], line[2]);
+		addRow(line[0], line[1]);
     }
 }
 </script>
 
 <script>
-function addRow(className, postedBy, comment)
+function addRow(to, message)
 {
          if (!document.getElementsByTagName) return;
          tabBody=document.getElementsByTagName("tbody").item(0);
          row=document.createElement("tr");
          c1 = document.createElement("td");
          c2 = document.createElement("td");
-		 c3 = document.createElement("td");
-         textnode1=document.createTextNode(className);
-         textnode2=document.createTextNode(postedBy);
-		 textnode3=document.createTextNode(comment);
+		
+         textnode1=document.createTextNode(to);
+         textnode2=document.createTextNode(message);
+	
 		 
          c1.appendChild(textnode1);
          c2.appendChild(textnode2);
-		 c3.appendChild(textnode3);
+		
          row.appendChild(c1);
          row.appendChild(c2);
-		 row.appendChild(c3);
+	
          tabBody.appendChild(row);
-
-
 }
 </script>
+
 </body>
 
 </html>
